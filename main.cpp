@@ -9,17 +9,17 @@
 #include <stdarg.h>
 
 
-float angle2=0.0;    
+float angle2=0.0;    // Variable sudut pada saat animasi
 float red=1.0, blue=0.3, green=0.5;
 float sudut=0.0;
 float asd=0.0, fgh=0.0;
 float _x=0,_y=0,_z=0;
 float ert=0.0, yui=0.0;
 
-//sudut pandang
-static float angle=0.0,ratio;            
-static float x=0.0f,y=10.75f,z=55.0f;      
-static float lx=0.0f,ly=0.0f,lz=-1.0f;   
+//Variable untuk manipulasi sudut pandang
+static float angle=0.0,ratio;            //Sudut perputaran kamera (terhadap sumbu y)
+static float x=0.0f,y=10.75f,z=55.0f;      //Posisi Kamera
+static float lx=0.0f,ly=0.0f,lz=-1.0f;   //Vektor sudut pandang
 
 
 void garis_xy(){
@@ -55,7 +55,7 @@ glTranslated(_x,_y,_z);
     glScalef(panjang, tinggi, lebar);
     glutSolidCube(1);
 }
-///////////////////////////BIANGLALA/////////////////////////////////////////////
+//BIANGLALA
 float qwe = 1.0;
 float angl = 5.0;
 void ada(){
@@ -64,7 +64,7 @@ void ada(){
          glRotatef(qwe,0,0,1);
          glColor3f(2.0,1.0,1.1);
         glutSolidCone(5,3,50,4);
-  
+   qwe+=0.5;
     glPopMatrix();
     glPushMatrix();
         glTranslatef(0,0,-0.5);
@@ -72,7 +72,7 @@ void ada(){
          glRotatef(qwe,0,0,1);
          glColor3f(0.0,1.0,1.0);
         glutWireCone(5,3,50,4);
-
+  qwe+=0.5;
     glPopMatrix();
     }
 
@@ -154,6 +154,7 @@ void duduk(){
                 glutSolidOctahedron();
             glPopMatrix();
         glPopMatrix();
+angl-=1;
 }
 
 void ass(){
@@ -180,6 +181,8 @@ void kaki(){
     glPopMatrix();
 
 }
+//////////////////////////BIANGLALA/////////////////////////////////
+
 
 float zxc = 2.0;
 
@@ -218,13 +221,13 @@ void donat() {
     glRotatef(270,0,1,0);
         gluCylinder(quadric, 0.1, 0.1, 3,30, 40);
         glPushMatrix();
-                //glTranslatef(0,-1.5,0);
+                glTranslatef(0,-1.5,0);
                 glColor3f(1.0,0.1,0.1);
                 glRotatef(-90,0,1,0);
                 glRotatef(-180,1,0,0);
-                //gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
-                //glTranslatef(0,0,0.75);
-                //glutSolidCone(0.8,0.8,50,2);
+                gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
+                glTranslatef(0,0,0.75);
+                glutSolidCone(0.8,0.8,50,2);
 
                 gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
                    glTranslatef(0,0,0.75);
@@ -259,10 +262,10 @@ void donat() {
                 glTranslatef(0,0,12);
                 glRotatef(90,0,1,0);
                 glRotatef(180,1,0,0);
-                  //glRotatef(270,1,0,0);
-                   //gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
-                   //glTranslatef(0,0,0.75);
-                  //glutSolidCone(0.8,0.8,50,2);
+                  glRotatef(270,1,0,0);
+                   gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
+                   glTranslatef(0,0,0.75);
+                  glutSolidCone(0.8,0.8,50,2);
                    gluCylinder(quadric, 0.5, 0.5, 1, 20, 20);
                    glTranslatef(0,0,0.75);
                   glutWireCone(0.8,0.8,50,2);
@@ -277,9 +280,8 @@ glPopMatrix();
 }
 
 
-
 void alas(){
-     //alas
+     //Menggambar Tanah
      glColor3f(0.2, 4.5, 2.2);
 	glBegin(GL_POLYGON);
            glTexCoord2f(0.0f,0.0f);
@@ -295,13 +297,16 @@ void alas(){
      glPopMatrix();
      }
 
+
+
+
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
                    alas();
     glPopMatrix();
 
- 
+    //bianglala
     glPushMatrix();
 
                    glTranslatef(-20,16,-20);
@@ -316,12 +321,10 @@ void renderScene(void) {
                    glPopMatrix();
                    glColor3f(1.0,1.0,1.0);
    glPopMatrix();
-//////////////////////////end-BIANGLALA/////////////////////////////////
+   /////////////////end-bianglala////////////////////////
 
 
-
-
-	// Halaman
+	//Menggambar Halaman
 	glColor3f(0, 3, 0);
 	glBegin(GL_QUADS);
 		glVertex3f(-40.0, 0.1, -40.0);
@@ -329,8 +332,8 @@ void renderScene(void) {
 		glVertex3f( 40.0, 0.1,  40.0);
 		glVertex3f( 40.0, 0.1, -40.0);
 	glEnd();
-//////////////////////////DANBOO/////////////////////////////////
 
+	///////////Danbo//////////////
 	 glPushMatrix(); //kepala
     glTranslatef(14.8, 14.9, 4);
     glColor3f(1.0, 0.5, 0.0);
@@ -410,29 +413,41 @@ void renderScene(void) {
     glColor3f(1.0, 0.5, 0.0);
     balok(1.8, 1.8, 5);
     glPopMatrix();
-//////////////////////////end-DANBOO/////////////////////////////////
+
+
+
+
+	////end-Danboo////
+
 
     glutSwapBuffers();
 }
 
 
+// Fungsi untuk menyesuaikan perspektif ketika window dirubah ukurannya
 void changeSize(int w, int h) {
 
+	// Menghindari pembagian oleh 0.
 	if(h == 0)
 		h = 1;
 
+    // Rasio antara lebar dengan tinggi layar
 	float ratio = 1.0* w / h;
 
-	glMatrixMode(GL_PROJECTION); 
-	glLoadIdentity();            
+	// Reset the coordinate system before modifying
+	glMatrixMode(GL_PROJECTION); //Matrik diset : Matrik Proyeksi
+	glLoadIdentity();            //Meload matrik identitas
 
+	// Set the viewport to be the entire window (titik pusat ruang pandang)
 	glViewport(0, 0, w, h);
 
-	gluPerspective(45,ratio,1,1000);
-                                     
-	glMatrixMode(GL_MODELVIEW);     
-	glLoadIdentity();                
+	// Set the correct perspective.
+	gluPerspective(45,ratio,1,1000); //Parameter perspektif (sudut di sumbu yz, rasio lebar/tinggi,
+                                     //near clipping planes, far clipping plane)
+	glMatrixMode(GL_MODELVIEW);      //Set matrix ke GL_MODELVIEW
+	glLoadIdentity();                //Load identity matrix
 
+    //gluLookAt
     gluLookAt(x     , y    , z,
               x + lx,y + ly,z + lz,
 		      0.0f  ,1.0f  ,0.0f);
@@ -487,34 +502,39 @@ const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat high_shininess[] = { 100.0f };
 
 
-
+//Fungsi utama
 int main(int argc, char **argv) {
+     //argc -> a pointer to the unmodified argc variable from the main function
+     //argv -> a pointer to the unmodified argv variable from the main function
      glutInit(&argc, argv);
 
      glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 
-   
+     //Parameter posisi window (x,y)
      glutInitWindowPosition(100,100);
 
-
+     //Parameter ukuran window (panjang,lebar)
 	 glutInitWindowSize(640,360);
 
+     //Membuat windows Latihan
 	 glutCreateWindow("Danboo di tempat bermain");
 
      glClearColor( 0.1, 0.5, 1, 0);
-
+     //Fungsi utama untuk menampilkan objek
      glutDisplayFunc(renderScene);
 
+     //Fungsi yang dijalankan dalam keadaan idle
      glutIdleFunc(renderScene);
 
-
+     //Fungsi untuk mengatur perspektif.
+     //Untuk mempertahankan ukuran objek saat jendela dirubah ukurannya
      glutReshapeFunc(changeSize);
 
      glutSpecialFunc(inputKey);
 
-
+     //Mengaktifkan depth testing
      glEnable(GL_DEPTH_TEST);
-
+    //Mengatur Pencahayaan
     glDepthFunc(GL_LESS);
 
    glEnable(GL_LIGHT0);
@@ -533,6 +553,7 @@ int main(int argc, char **argv) {
     glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 
 
+     //Never ending loop, agar layar tidak langsung tertutup
  	 glutMainLoop();
 
 }
